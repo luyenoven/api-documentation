@@ -173,7 +173,43 @@ paths:
       responses:
         default:
           description: "Redirect to User listing"
-
+  /user/changepass:
+    post:
+      tags:
+      - "user"
+      summary: "User change password"
+      description: "This can only be done by the logged in user."
+      operationId: "changepassword"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "old_password"
+        in: "query"
+        description: "The ID that needs to be fetched. Use user1 for testing. "
+        required: true
+        type: "string"
+      - name: "password"
+        in: "query"
+        description: "New password for login"
+        required: true
+        type: "string"
+      - name: "confirm_password"
+        in: "query"
+        description: "Confirm new password for login"
+        required: true
+        type: "string"
+      responses:
+        default:
+          description: ""
+          schema:
+            type: "object"
+            properties:
+              status:
+                type: "boolean"
+                description: "True: Success or False: not success. If status equal TRUE, sign out system"
+              message:
+                type: "string"
+                description: "Alert content"
   /user/{id}:
     get:
       tags:
@@ -182,7 +218,6 @@ paths:
       description: ""
       operationId: "getUserById"
       produces:
-      - "application/xml"
       - "application/json"
       parameters:
       - name: "id"
