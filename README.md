@@ -1,2 +1,4 @@
 # api-documentation
-API Documentation
+# API Documentation
+# run project
+docker-compose up
